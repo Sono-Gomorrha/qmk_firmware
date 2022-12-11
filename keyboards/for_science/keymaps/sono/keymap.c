@@ -20,12 +20,14 @@
 #include "features/caps_word.h"
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
-//    _QWERTZ,
-    _HD_TITANIUM,
-    _COLEMAKDH,
+    //_HD_TITANIUM,
+    _HD_RHODIUM,
+    _QWERTZ,
+    //    _COLEMAKDH,
     _NUMFU,
     _NAVIGATION,
     _SYMBOLS,
+    _MOUSE,
 //    _FUNCT
 };
 
@@ -41,8 +43,10 @@ enum custom_keycodes {
 //  SCROT // screenshot
 };
 
-#define COLEMAK TO(_COLEMAKDH)
-#define HD TO(_HD_TITANIUM)
+#define QWERTZ TO(_QWERTZ)
+//#define COLEMAK TO(_COLEMAKDH)
+//#define HD TO(_HD_TITANIUM)
+#define HD TO(_HD_RHODIUM)
 //#define COPY
 //#define PASTE
 //#define NUM_G //copied from https://www.jonashietala.se/blog/2021/06/03/the-t-34-keyboard-layout/
@@ -56,30 +60,39 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/*
-*  [_QWERTZ] = LAYOUT_split_4x5_3(
-*    KC_TAB,  KC_ESC,  DE_LPRN, DE_LCBR, DE_LBRC,    DE_RBRC, DE_RCBR, DE_RPRN, DE_QUOT, KC_BSPC,
-*    DE_Q,    DE_W,    DE_E,    DE_R,    DE_T,       DE_Z,    DE_U,    DE_I,    DE_O,    DE_P,
-*    SFT_A,   DE_S,    DE_D,    DE_F,    DE_G,       DE_H,    DE_J,    DE_K,    DE_L,    DE_ENT,
-*    DE_Y,    DE_X,   DE_C,    DE_V,    DE_B,       DE_N,    DE_M,    DE_COMM, DE_DOT,  LAY_SLS,
-*                      DE_LCTL, DE_LGUI, DE_LALT,    LAY_SPC, LAYER,   DE_RSFT
+/*[_HD_TITANIUM] = LAYOUT_split_4x5_3(
+*    QWERTZ,  KC_ESC,  XXXXXXX, DE_LPRN, DE_LABK,    DE_RABK, DE_RPRN, COPY, PASTE, KC_BSPC,
+*    DE_J,   DE_G,    DE_M,    DE_P,    DE_V,       DE_SCLN,    DE_DOT,    DE_SLSH,    DE_DQUO,    DE_QUOT,
+*    LCTL_T(DE_C),  LSFT_T(DE_S),    LGUI_T(DE_N),    LALT_T(DE_T),    DE_W,       DE_COMM,    RALT_T(DE_A),    RGUI_T(DE_E),    RSFT_T(DE_I),    RCTL_T(DE_H),
+*    DE_X,    DE_F,   DE_L,    DE_D,    DE_B,       DE_MINS,    DE_U,    DE_O, DE_Z,   DE_K,
+*                      KC_BSPC, DE_R, KC_ENT,       LT(_SYMBOLS, KC_TAB), LT(_NUMFU, KC_SPACE),   TG(_NAVIGATION)
 *),
 */
-[_HD_TITANIUM] = LAYOUT_split_4x5_3(
-    COLEMAK,  KC_ESC,  XXXXXXX, DE_LPRN, DE_LABK,    DE_RABK, DE_RPRN, COPY, PASTE, KC_BSPC,
-    DE_J,   DE_G,    DE_M,    DE_P,    DE_V,       DE_SCLN,    DE_DOT,    DE_SLSH,    DE_DQUO,    DE_QUOT,
-    LCTL_T(DE_C),  LSFT_T(DE_S),    LGUI_T(DE_N),    LALT_T(DE_T),    DE_W,       DE_COMM,    RALT_T(DE_A),    RGUI_T(DE_E),    RSFT_T(DE_I),    RCTL_T(DE_H),
-    DE_X,    DE_F,   DE_L,    DE_D,    DE_B,       DE_MINS,    DE_U,    DE_O, DE_Z,   DE_K,
-                      KC_BSPC, DE_R, KC_ENT,       LT(_SYMBOLS, KC_TAB), LT(_NUMFU, KC_SPACE),   TG(_NAVIGATION)
+
+[_HD_RHODIUM] = LAYOUT_split_4x5_3(
+    QWERTZ,  KC_ESC,  XXXXXXX, DE_LPRN, DE_LABK,    DE_RABK, DE_RPRN, COPY, PASTE, KC_BSPC,
+    DE_B,   DE_J,    DE_H,    DE_G,    DE_X,       DE_SCLN,    DE_DOT,    DE_SLSH,    DE_DQUO,    DE_QUOT,
+    LCTL_T(DE_C),  LSFT_T(DE_S),    LGUI_T(DE_N),    LALT_T(DE_T),    DE_K,       DE_COMM,    RALT_T(DE_A),    RGUI_T(DE_E),    RSFT_T(DE_I),    RCTL_T(DE_M),
+    DE_P,    DE_F,   DE_L,    DE_D,    DE_V,       DE_MINS,    DE_U,    DE_O, DE_Z,   DE_W,
+                      KC_BSPC, DE_R, KC_ENT,       LT(_SYMBOLS, KC_TAB), LT(_NUMFU, KC_SPACE),   MO(_NAVIGATION)
 ),
 
 
-[_COLEMAKDH] = LAYOUT_split_4x5_3(
-    HD,  KC_ESC,  DE_LPRN, DE_LCBR, DE_LBRC,    DE_RBRC, DE_RCBR, DE_RPRN, DE_QUOT, KC_BSPC,
-    DE_Q,   DE_W,    DE_F,    DE_P,    DE_B,       DE_J,    DE_L,    DE_U,    DE_Y,    DE_SCLN,
-    LGUI_T(DE_A),  LALT_T(DE_R),    LCTL_T(DE_S),    LSFT_T(DE_T),    DE_G,       DE_M,    RSFT_T(DE_N),    RCTL_T(DE_E),    RALT_T(DE_I),    RGUI_T(DE_O),
-    DE_Z,    DE_X,   DE_C,    DE_D,    DE_V,       DE_K,    DE_H,    DE_COMM, DE_DOT,   DE_SLSH,
-                      KC_BSPC, DE_R, KC_ENT,       LT(_SYMBOLS, KC_TAB), LT(_NUMFU, KC_SPACE),   TG(_NAVIGATION)
+/*[_COLEMAKDH] = LAYOUT_split_4x5_3(
+*    HD,  KC_ESC,  DE_LPRN, DE_LCBR, DE_LBRC,    DE_RBRC, DE_RCBR, DE_RPRN, DE_QUOT, KC_BSPC,
+*    DE_Q,   DE_W,    DE_F,    DE_P,    DE_B,       DE_J,    DE_L,    DE_U,    DE_Y,    DE_SCLN,
+*    LGUI_T(DE_A),  LALT_T(DE_R),    LCTL_T(DE_S),    LSFT_T(DE_T),    DE_G,       DE_M,    RSFT_T(DE_N),    RCTL_T(DE_E),    RALT_T(DE_I),    RGUI_T(DE_O),
+*    DE_Z,    DE_X,   DE_C,    DE_D,    DE_V,       DE_K,    DE_H,    DE_COMM, DE_DOT,   DE_SLSH,
+*                      KC_BSPC, DE_R, KC_ENT,       LT(_SYMBOLS, KC_TAB), LT(_NUMFU, KC_SPACE),   TG(_NAVIGATION)
+*),
+*/
+
+[_QWERTZ] = LAYOUT_split_4x5_3(
+    HD,  KC_ESC,  XXXXXXX, DE_LPRN, DE_LABK,    DE_RABK, DE_RPRN, COPY, PASTE, KC_BSPC,
+    DE_Q,    DE_W,    DE_E,    DE_R,    DE_T,       DE_Z,    DE_U,    DE_I,    DE_O,    DE_P,
+    LCTL_T(DE_A),  LSFT_T(DE_S),    LGUI_T(DE_D),    LALT_T(DE_F),    DE_G,       DE_H,    RALT_T(DE_J),    RGUI_T(DE_K),    RSFT_T(DE_L),    RCTL_T(DE_SLSH),
+    DE_Y,    DE_X,   DE_C,    DE_V,    DE_B,       DE_N,    DE_M,    DE_COMM, DE_DOT,  DE_MINS,
+                      KC_BSPC, DE_R, KC_ENT,       LT(_SYMBOLS, KC_TAB), LT(_NUMFU, KC_SPACE),   MO(_NAVIGATION)
 ),
 
 [_NUMFU] = LAYOUT_split_4x5_3(
@@ -93,10 +106,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NAVIGATION] = LAYOUT_split_4x5_3(
     RESET, _______, _______, _______, _______,    _______, _______, _______, _______, RESET,
-    PAPP, NAPP, KC_PGUP, KC_HOME, SCROT,    _______, _______, _______, _______, _______,
-    KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, COPY,    _______, _______, PTAB, NTAB, _______,
+    PAPP, NAPP, KC_PGUP, KC_HOME, SCROT,    _______, _______, PTAB, NTAB, _______,
+    KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, COPY,    _______, _______, _______, _______, _______,
     KC_0, DE_DLR, KC_PGDN, KC_END, PASTE,    _______, _______, _______, _______, _______,
-                      _______, _______, _______,    _______, _______, _______
+                      MO(_MOUSE), _______, _______,    _______, _______, _______
 ),
 
 [_SYMBOLS] = LAYOUT_split_4x5_3(
@@ -106,6 +119,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, DE_MICR, DE_LABK, DE_RABK, DE_EXLM,    DE_SECT, DE_LCBR, DE_RCBR, _______, _______,
                       _______, _______, _______,    _______, _______, _______
 ),
+
+
+[_MOUSE] = LAYOUT_split_4x5_3(
+    _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______,
+    _______, _______, KC_MS_UP, _______, _______,    _______, _______, _______, _______, _______,
+    _______, KC_MS_LEFT, KC_MS_DOWN, KC_MS_RIGHT, _______,    _______, KC_MS_BTN1, KC_MS_BTN2, KC_MS_WH_UP, KC_MS_WH_DOWN,
+    _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______,
+                      _______, _______, _______,    _______, _______, _______
+),
+
 
 
 /*

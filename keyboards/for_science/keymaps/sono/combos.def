@@ -1,9 +1,9 @@
 //   name       result      chord keys
 COMB(qu_combo,  QU,         DE_Z, DE_K)
-COMB(Q_combo,   DE_Q,       DE_U, DE_K)
-COMB(Y_combo,   DE_Y,        DE_J, DE_G)
+COMB(Q_combo,   DE_Q,       DE_N, DE_T)
+COMB(Y_combo,   DE_Y,        DE_J, DE_B)
 COMB(ADIA,      DE_ADIA,    RALT_T(DE_A), RGUI_T(DE_E))
 COMB(UDIA,      DE_UDIA,    DE_U, DE_O)
 COMB(ODIA,      DE_ODIA,    DE_O, DE_Z)
-COMB(SZ,        DE_SS,      DE_C, DE_S)
+COMB(SZ,        DE_SS,      LCTL_T(DE_C), LSFT_T(DE_S))
 COMB(ESC_combo, KC_ESC,     DE_S, DE_N)
