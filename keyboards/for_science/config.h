@@ -15,7 +15,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 #include "config_common.h"
-
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0xF22C
@@ -40,21 +39,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 //#define MATRIX_ROW_PINS { F6, B1, B3, B2, B6 }
 #define MATRIX_ROW_PINS { D4, D7, E6, B4, B5 }
+//#define MATRIX_ROW_PINS { D4, D7, E6, B4, B5 }
 //#define MATRIX_COL_PINS { D4, C6, D7, E6, B4 }
-#define MATRIX_COL_PINS { F6, F7, B1, B3, B2 }
-#define UNUSED_PINS
+#define MATRIX_COL_PINS { B2, B3, B1, F7, F6 }
+//#define MATRIX_COL_PINS { F6, F7, B1, B3, B2 }
+//#define UNUSED_PINS
 
 //#define USE_I2C
 #define SOFT_SERIAL_PIN D0
 
 /* COL2ROW, ROW2COL, or CUSTOM_MATRIX */
-#define DIODE_DIRECTION ROW2COL
+#define DIODE_DIRECTION COL2ROW
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 5
+//#define DEBOUNCE 5
 
 //#define MASTER_RIGHT
-
+#define SPLIT_USB_DETECT
+#define SPLIT_USB_TIMEOUT 2000
+#define COMBO_VARIABLE_LEN
+#undef COMBO_TERM
+#define COMBO_TERM 50
+//#define TAPPING_TERM 200
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
